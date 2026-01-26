@@ -127,17 +127,82 @@ span{
 }
 
 /* Hero Section */
+/* --- HERO SECTION (Contenedor Principal) --- */
 .hero {
-    height: 100vh;
-    background: url('../img/hero-bg.jpg') no-repeat center center/cover;
+    /* Aumentamos un poco la altura para que quepa todo */
+    height: 90vh; 
+    min-height: 600px; 
     position: relative;
     display: flex;
+    flex-direction: column;
+    /* Justify-content: flex-start ayuda a empujar cosas hacia arriba si usamos margins */
     align-items: center;
-    justify-content: center;
+    justify-content: center; 
     text-align: center;
     color: white;
-    margin-top: 80px; /* Offset del navbar */
+    margin-top: 80px; /* Espacio para el navbar */
+    margin-bottom: 50px; /* Margen inferior externo */
+    overflow: visible; /* Permitir que la sombra de las tarjetas se vea */
 }
+
+/* El contenido (Texto y Botones) - LO MOVEMOS HACIA ARRIBA */
+.hero-content {
+    z-index: 2;
+    /* Esto es clave: empuja el texto hacia arriba para no chocar con las tarjetas */
+    margin-bottom: 120px; 
+    padding: 0 20px;
+    max-width: 800px;
+}
+
+/* Ajuste de textos del Hero para que no sean gigantes */
+.hero h1 {
+    font-size: 3rem; /* Un poco más controlado */
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+    margin-bottom: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* --- CARRUSEL DE FONDO (Igual que antes) --- */
+.hero-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+.slide.active { opacity: 1; }
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Oscurecer un poco para leer texto */
+    z-index: 1;
+}
+
+
 
 .hero-overlay {
     position: absolute;

@@ -58,4 +58,27 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // ... (Tu código anterior del menú y filtros) ...
+
+    // --- Lógica del Carrusel Hero ---
+    const slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+    const slideInterval = 5000; // Tiempo en milisegundos (5 segundos)
+
+    function nextSlide() {
+        // Quitar clase active de la imagen actual
+        slides[currentSlide].classList.remove('active');
+        
+        // Calcular el índice de la siguiente imagen (si llega al final, vuelve a 0)
+        currentSlide = (currentSlide + 1) % slides.length;
+        
+        // Poner clase active a la nueva imagen
+        slides[currentSlide].classList.add('active');
+    }
+
+    // Iniciar el cambio automático solo si existen slides
+    if(slides.length > 0){
+        setInterval(nextSlide, slideInterval);
+    }
 });
